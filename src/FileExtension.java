@@ -49,12 +49,15 @@ public class FileExtension implements FileExtensionMethods {
     @Override
     public void printMatching() {
 
+        if (fileTypeMatchingExtension()) {
 
-            if (fileTypeMatchingExtension()) {
-                System.out.println("File type and extension are matching");
-
-            } else {
-                System.out.println("Extension is " + getFileExtension() + ", while actually it's a " + getMimeType());
+            if (getFileExtension().toLowerCase().matches("png|jpg|text|pdf")) {
+                System.out.println("Extension " + getFileExtension() + " is true");
             }
+
+        } else {
+            System.out.println("Extension is " + getFileExtension() + ", while actually it's a " + getMimeType());
         }
+    }
+
 }

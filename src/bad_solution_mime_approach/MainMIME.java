@@ -1,6 +1,8 @@
+package bad_solution_mime_approach;
+
 import java.io.*;
 
-public class Main {
+public class MainMIME {
 
     public static void main(String[] args) {
 

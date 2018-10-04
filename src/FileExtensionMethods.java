@@ -1,6 +1,8 @@
 public interface FileExtensionMethods {
 
     String getMimeType();
-    String getFileExtension();
+    String getFileExtension(); // Substract file extension only
+    String getMatchPattern(); // For regular expression
+    boolean fileTypeMatchingExtension();
 
 }

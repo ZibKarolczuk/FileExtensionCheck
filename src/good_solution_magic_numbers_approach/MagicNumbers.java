@@ -52,4 +52,24 @@ public class MagicNumbers implements MagicNumbersMethods {
         return filename.substring(indexOfLastDot + 1, filename.length());
     }
 
+    @Override
+    public void extensionCheck() {
+
+        if (convertToHexadecimal().contains("ffef")){
+            System.out.println("TEXT file");
+        }
+
+        if (convertToHexadecimal().contains("ffd8ff")){
+            System.out.println("JPG file");
+        }
+
+        if (convertToHexadecimal().contains("47494638")){
+            System.out.println("GIF file");
+        }
+
+        if (convertToHexadecimal().contains("25504446")){
+            System.out.println("PDF file");
+        }
+
+    }
 }

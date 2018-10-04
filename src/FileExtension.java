@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -45,6 +46,15 @@ public class FileExtension implements FileExtensionMethods {
         return Pattern.matches(getMatchPattern(), getFileExtension()) ? true : false;
     }
 
-    
+    @Override
+    public void printMatching() {
 
+
+            if (fileTypeMatchingExtension()) {
+                System.out.println("File type and extension are matching");
+
+            } else {
+                System.out.println("Extension is " + getFileExtension() + ", while actually it's a " + getMimeType());
+            }
+        }
 }

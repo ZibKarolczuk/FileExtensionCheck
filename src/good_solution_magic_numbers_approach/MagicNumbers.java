@@ -4,12 +4,17 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Enumeration;
+import java.util.Hashtable;
 
 public class MagicNumbers implements MagicNumbersMethods {
 
     private String filename;
     private File file;
     private byte[] bytes;
+
+    private Hashtable magictable = new Hashtable();
+
 
     public MagicNumbers(String filename) {
         this.filename = filename;
@@ -55,29 +60,33 @@ public class MagicNumbers implements MagicNumbersMethods {
     @Override
     public void compareMagicNumberWithExtension(String type) {
         if (type.matches(getFileExtension())){
-            System.out.println("The file is indeed " + type.toUpperCase() + " type");
+            System.out.println(type.toUpperCase() + " file is indeed " + type.toUpperCase() + " file");
         } else {
-            System.out.println("File content is " + type.toUpperCase() + " but extension is " + getFileExtension().toUpperCase());
+            System.out.println("Extension is " + type.toUpperCase() + ", while actually it's a " + getFileExtension().toUpperCase());
         }
     }
 
     @Override
-    public void identifyTypeByMagicNumbers() {
+    public void identifyTypeByMagicNumbers() throws Exception {
 
-        if (convertToHexadecimal().contains("ffef")){
-            compareMagicNumberWithExtension("txt");
+        magictable.put("ffef", "txt");
+        magictable.put("ffd8ff", "jpg");
+        magictable.put("47494638", "gif");
+        magictable.put("25504446", "pdf");
+
+        Enumeration e = magictable.keys();
+        boolean extensionKnown = false;
+
+        while (e.hasMoreElements()){
+            String key = (String) e.nextElement();
+            if (convertToHexadecimal().contains(key)){
+                extensionKnown = true;
+                compareMagicNumberWithExtension((String) magictable.get(key));
+            }
         }
 
-        if (convertToHexadecimal().contains("ffd8ff")){
-            compareMagicNumberWithExtension("jpg");
-        }
-
-        if (convertToHexadecimal().contains("47494638")){
-            compareMagicNumberWithExtension("gif");
-        }
-
-        if (convertToHexadecimal().contains("25504446")){
-            compareMagicNumberWithExtension("pdf");
+        if (extensionKnown == false){
+                throw new Exception ("File format not recognized");
         }
 
     }

@@ -1,7 +1,7 @@
 package good_solution_magic_numbers_approach;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         String filename = "./files/file2.pde";
 

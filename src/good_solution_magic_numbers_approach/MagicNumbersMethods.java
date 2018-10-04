@@ -5,6 +5,6 @@ public interface MagicNumbersMethods {
     String convertToHexadecimal();
     String getFileExtension();
     void compareMagicNumberWithExtension(String type);
-    void identifyTypeByMagicNumbers();
+    void identifyTypeByMagicNumbers() throws Exception;
 
 }

@@ -53,22 +53,31 @@ public class MagicNumbers implements MagicNumbersMethods {
     }
 
     @Override
-    public void extensionCheck() {
+    public void compareMagicNumberWithExtension(String type) {
+        if (type.matches(getFileExtension())){
+            System.out.println("The file is indeed " + type.toUpperCase() + " type");
+        } else {
+            System.out.println("File content is " + type.toUpperCase() + " but extension is " + getFileExtension().toUpperCase());
+        }
+    }
+
+    @Override
+    public void identifyTypeByMagicNumbers() {
 
         if (convertToHexadecimal().contains("ffef")){
-            System.out.println("TEXT file");
+            compareMagicNumberWithExtension("txt");
         }
 
         if (convertToHexadecimal().contains("ffd8ff")){
-            System.out.println("JPG file");
+            compareMagicNumberWithExtension("jpg");
         }
 
         if (convertToHexadecimal().contains("47494638")){
-            System.out.println("GIF file");
+            compareMagicNumberWithExtension("gif");
         }
 
         if (convertToHexadecimal().contains("25504446")){
-            System.out.println("PDF file");
+            compareMagicNumberWithExtension("pdf");
         }
 
     }

@@ -4,5 +4,7 @@ public interface MagicNumbersMethods {
 
     String convertToHexadecimal();
     String getFileExtension();
-    void extensionCheck();
+    void compareMagicNumberWithExtension(String type);
+    void identifyTypeByMagicNumbers();
+
 }

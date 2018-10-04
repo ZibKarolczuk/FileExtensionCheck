@@ -62,7 +62,7 @@ public class MagicNumbers implements MagicNumbersMethods {
         if (type.matches(getFileExtension())){
             System.out.println(type.toUpperCase() + " file is indeed " + type.toUpperCase() + " file");
         } else {
-            System.out.println("Extension is " + type.toUpperCase() + ", while actually it's a " + getFileExtension().toUpperCase());
+            System.out.println("Extension is " + getFileExtension().toUpperCase() + ", while actually it's a " + type.toUpperCase());
         }
     }
 

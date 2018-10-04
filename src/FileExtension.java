@@ -3,7 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class FileExtension {
+public class FileExtension implements FileExtensionMethods {
 
     private String filename;
     private String mimeType;
@@ -22,7 +22,16 @@ public class FileExtension {
         return filename;
     }
 
+    @Override
     public String getMimeType() {
         return mimeType;
     }
+
+    @Override
+    public String getFileExtension() {
+        int indexOfLastDot = filename.lastIndexOf(".");
+        return filename.substring(indexOfLastDot + 1, filename.length());
+    }
+
+
 }
